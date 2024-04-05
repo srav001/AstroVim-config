@@ -4,35 +4,41 @@
 ---@type LazySpec
 return {
   {
-    "lvimuser/lsp-inlayhints.nvim",
-    lazy = false,
-    dependencies = {
-      "AstroNvim/astrocore",
-      opts = {
-        autocmds = {
-          LspAttach_inlayhints = {},
-          LspAttach = {
-            {
-              event = "LspAttach",
-              group = "LspAttach_inlayhints",
-              callback = function(args)
-                if not (args.data and args.data.client_id) then return end
-
-                local bufnr = args.buf
-                local client = vim.lsp.get_client_by_id(args.data.client_id)
-                require("lsp-inlayhints").on_attach(client, bufnr)
-              end,
-            },
-          },
-        },
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      window = {
+        position = "float",
       },
     },
-    opts = {},
+  },
+
+  {
+    "hrsh7th/nvim-cmp",
+    optional = true,
+    dependencies = {
+      { "js-everts/cmp-tailwind-colors", opts = {} },
+    },
+    opts = function(_, opts)
+      local format_kinds = opts.formatting.format
+      opts.formatting.format = function(entry, item)
+        if item.kind == "Color" then
+          item = require("cmp-tailwind-colors").format(entry, item)
+          if item.kind == "Color" then return format_kinds(entry, item) end
+          return item
+        end
+        return format_kinds(entry, item)
+      end
+    end,
   },
   {
-    "js-everts/cmp-tailwind-colors",
-    event = "InsertEnter",
-    opts = {},
+    "NvChad/nvim-colorizer.lua",
+    optional = true,
+    opts = {
+      user_default_options = {
+        names = true,
+        tailwind = true,
+      },
+    },
   },
   {
     "echasnovski/mini.move",
