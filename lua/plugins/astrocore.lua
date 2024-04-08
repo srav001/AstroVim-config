@@ -18,8 +18,6 @@ return {
       diagnostics_mode = 3, -- diagnostic mode on start (0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on)
       highlighturl = true, -- highlight URLs at start
       notifications = true, -- enable notifications at start
-      tabstop = 4, -- number of space in a tab
-      shiftwidth = 4, -- number of space inserted for indentation
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
@@ -33,7 +31,9 @@ return {
         number = true, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
-        wrap = true, -- sets vim.opt.wrap
+        wrap = true, -- sets vim.opt.wrap,
+        tabstop = 4, -- number of space in a tab
+        shiftwidth = 4, -- number of space inserted for indentation
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
