@@ -20,14 +20,14 @@ return {
     [";"] = { ":", desc = "enter command mode" },
 
     -- Move through buffers with tab and Stab
-    ["<tab>"] = {
-      function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
-      desc = "Next buffer",
-    },
-    ["<S-tab>"] = {
-      function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
-      desc = "Previous buffer",
-    },
+    -- ["<tab>"] = {
+    --   function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
+    --   desc = "Next buffer",
+    -- },
+    -- ["<S-tab>"] = {
+    --   function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
+    --   desc = "Previous buffer",
+    -- },
 
     -- NOTE TO SELF: Stop adding options that override sane defaults
     -- Adding goToDef manually since using lsp-inlayhints require lsp config which resets these defaults for lsps
@@ -74,4 +74,3 @@ return {
     -- ["<esc>"] = false,
   },
 }
-
