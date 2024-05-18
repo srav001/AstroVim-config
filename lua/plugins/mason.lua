@@ -1,6 +1,5 @@
 ---@type LazySpec
 return {
-  -- use mason-lspconfig to configure LSP installations
   {
     "williamboman/mason-lspconfig.nvim",
     -- overrides `require("mason-lspconfig").setup(...)`
@@ -8,19 +7,20 @@ return {
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
         "lua_ls",
+
         -- "tsserver",
         "vtsls",
-
         "eslint",
-
+        "svelte",
         -- "volar",
 
+        -- "astro",
         -- "html",
         -- "cssls",
-        "tailwindcss",
-        -- "astro",
-        "svelte",
         -- "unocss",
+        "tailwindcss",
+
+        -- "jsonls",
       })
     end,
   },
@@ -33,7 +33,6 @@ return {
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
         "prettier",
         "stylua",
-        -- add more arguments for adding more null-ls sources
       })
     end,
   },
