@@ -20,6 +20,13 @@ return {
   -- },
   {
     "supermaven-inc/supermaven-nvim",
-    config = function() require("supermaven-nvim").setup {} end,
+    config = function()
+      require("supermaven-nvim").setup {
+        keymaps = {
+          accept = "<C-l>",
+          accept_word = "<C-j>",
+        },
+      }
+    end,
   },
 }
